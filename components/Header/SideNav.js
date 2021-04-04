@@ -146,7 +146,7 @@ const SideNav = (props) => {
                 <a href="#" target="_blank" rel="noreferrer">
                     <FontAwesomeIcon icon={['fab', 'linkedin-in']}/>
                 </a>
-                <AnchorLink href="#footer">Socials</AnchorLink>
+                <AnchorLink className={style.socialM} href="#footer">Socials</AnchorLink>
             </div>
             <div className={style.circles}>
                 <div className={style.circle1}></div>
