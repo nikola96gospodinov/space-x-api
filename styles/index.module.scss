@@ -1,0 +1,244 @@
+@import './variables.scss';
+
+.banner {
+    background: linear-gradient(to right, rgba($neutral-0, .8), transparent), 
+                url(../public/images/banner.jpg);
+    background-size: cover;
+    background-position: 50% 25%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+
+    h1 {
+        color: $neutral-10;
+        font-size: 2.5rem;
+        font-weight: 500;
+        margin-top: 1rem;
+        margin-bottom: 2.5rem;
+
+        svg {
+            width: 2.5rem!important;
+        }
+    }
+
+    .upcoming {
+        color: $neutral-8;
+        font-size: 1.25rem;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-top: 2.5rem; // half the height of the header
+        display: block;
+    }
+}
+
+.aboutHome {
+    padding: $desktopGap 0;
+
+    .customGrid {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        grid-gap: 3rem;
+        align-items: center;
+    }
+
+    img {
+        width: 100%;
+        box-shadow: $shadow-main;
+        border-radius: .5rem;
+    }
+
+    p {
+        color: $neutral-10;
+        font-size: 1.125rem;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    a {
+        margin-bottom: 3rem;
+    }
+
+    .gridContainer {
+        padding: 6rem 3rem 3rem 3rem;
+        margin-top: -3rem;
+        background: $neutral-1;
+        margin-left: -3rem;
+        margin-right: -3rem;
+        box-shadow: $shadow-main;
+        overflow: hidden;
+        position: relative;
+        z-index: -1;
+        border-radius: 1rem;
+
+        span {
+            color: $neutral-8;
+            font-size: 1.25rem;
+        }
+
+        h3 {
+            color: $neutral-10;
+            font-size: 1.25rem;
+            margin-top: .25rem;
+        }
+
+        .circle1 {
+            background: linear-gradient(135deg, $secondary-8, $secondary-3);
+            height: 6rem;
+            width: 6rem;
+            border-radius: 50%;
+            position: absolute;
+            top: -1rem;
+            left: -1rem;
+        }
+
+        .circle2 {
+            background: linear-gradient(45deg, $primary-1, $primary-6);
+            height: 8rem;
+            width: 8rem;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -2rem;
+            right: -2rem;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .banner {
+        h1 {
+            font-size: 2rem;
+        }
+
+        .upcoming {
+            font-size: 1.125rem;
+        }
+    }
+
+    .aboutHome {
+        padding: $smallDesktopGap 0;
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .gridContainer {
+            span, h3 {
+                font-size: 1.125rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 834px) {
+    .banner {
+        height: 55vh;
+    }
+
+    .aboutHome {
+        .customGrid {
+            grid-template-columns: 1fr;
+        }
+
+        .gridContainer {
+            margin: 0;
+            padding: 3rem 6rem;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .banner {
+        background: linear-gradient(to top, $neutral-0 20%, transparent 60%), 
+                url(../public/images/banner.jpg);
+        height: 100vh;
+        align-items: flex-end;
+        background-position: center left;
+
+        h1 {
+            font-size: 1.5rem;
+            margin-top: .25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            margin-bottom: 5vw;
+        }
+
+        .upcoming {
+            font-size: 1rem;
+        }
+    }
+
+    .aboutHome {
+        padding: $mobileGap 0;
+
+        .customGrid {
+            grid-gap: 1.5rem;
+        }
+
+        p {
+            line-height: 1.25;
+        }
+
+        a {
+            margin-bottom: 2rem;
+        }
+
+        .gridContainer {
+            padding: 4rem;
+
+            .circle1 {
+                top: -2rem;
+                left: -2rem;
+            }
+
+            .circle2 {
+                bottom: -3rem;
+                right: -3rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 320px) {
+    .banner {
+        h1 {
+            font-size: 1.25rem;
+
+            svg {
+                width: 2rem!important;
+            }
+        }
+
+        .upcoming {
+            font-size: .875rem;
+        }
+    }
+}
+
+@media (min-width: 1600px) {
+    .banner {
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        .upcoming {
+            font-size: 1.625em;
+        }
+    }
+
+    .aboutHome {
+        padding: $bigDesktopGap 0;
+
+        p {
+            font-size: 1.5rem;
+        }
+
+        .gridContainer {
+            span, h3 {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}

@@ -1,0 +1,157 @@
+@import './variables.scss';
+
+.missionsBanner {
+    height: 100vh;
+    background: url(../public/images/missions-banner.jpg);
+    background-size: cover;
+}
+
+.missions {
+    padding: $desktopGap 0;
+}
+
+.card {
+    background: $neutral-1;
+    padding: 2rem;
+    border-radius: .5rem;
+    box-shadow: $shadow-main;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+
+    .circle {
+        background: linear-gradient($neutral-0, $neutral-1);
+        height: 10rem;
+        width: 10rem;
+        border-radius: 50%;
+        position: absolute;
+        top: -2.5rem;
+        left: -2.5rem;
+    }
+
+    .zIndexIncrease {
+        z-index: 2;
+        position: relative;
+    }
+
+    h2 {
+        color: $neutral-10;
+        font-weight: 600;
+        margin-bottom: .75rem;
+    }
+
+    p {
+        color: $neutral-8;
+        margin-bottom: 1.5rem;
+    }
+
+    .manufacturer {
+        padding: .5rem 0;
+        font-size: 1.25rem;
+        display: flex;
+        justify-content: space-between;
+        color: $neutral-10;
+        border-bottom: .1rem solid $neutral-2;
+    }
+
+    .links {
+        margin-top: 1rem;
+
+        svg {
+            margin-right: .75rem;
+            height: 1.25rem;
+            width: 1.25rem;
+            padding: .5rem;
+            background: linear-gradient($neutral-10, $neutral-8);
+            border-radius: 50%;
+            color: $neutral-0;
+            box-shadow: $shadow-main;
+            transition: .2s ease;
+        }
+
+        svg:hover {
+            box-shadow: $shadow-hover;
+            transform: translateY(.1rem);
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .missions {
+        padding: $smallDesktopGap 0;
+    }
+}
+
+@media (max-width: 834px) {
+    .missionsBanner {
+        height: 55vh;
+    }
+}
+
+@media (max-width: 600px) {
+    .missionsBanner {
+        height: 100vh;
+        background: linear-gradient(to top, $neutral-0 20%, transparent 50%),
+                    url(../public/images/missions-banner.jpg);
+        background-size: cover;
+        background-position: center;
+    }
+
+    .missions {
+        padding: $mobileGap 0;
+    }
+
+    .card {
+        padding: 1.5rem;
+
+        p {
+            line-height: 1.25;
+        }
+
+        .manufacturer {
+            font-size: 1rem;
+
+            span:last-child {
+                text-align: right;
+            }
+
+            strong {
+                margin-left: .5rem;
+            }
+        }
+    }
+}
+
+@media (min-width: 1600px) {
+    .missions {
+        padding: $bigDesktopGap 0;
+    }
+
+    .card {
+        padding: 2.5rem;
+
+        h2 {
+            font-size: 1.75rem;
+        }
+
+        p {
+            font-size: 1.25rem;
+        }
+
+        .manufacturer {
+            font-size: 1.5rem;
+        }
+
+        .links {
+            margin-top: 1.5rem;
+
+            svg {
+                height: 1.5rem;
+                width: 1.5rem;
+                margin-right: 1rem;
+            }
+        }
+    }
+}

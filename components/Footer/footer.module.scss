@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+
+.footer {
+    padding: 2rem 0;
+    background: linear-gradient(to right, $neutral-0, $neutral-1);
+
+    p, a {
+        color: $neutral-10;
+    }
+
+    .social {
+        margin-top: 1rem;
+        display: none;
+
+        svg {
+            height: 1.125rem;
+            width: 1.125rem;
+            background: $neutral-10;
+            border-radius: 50%;
+            color: $neutral-0;
+            padding: .375rem;
+            margin-right: 1rem;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .footer {
+        p {
+            line-height: 1.25;
+        }
+
+        .social {
+            display: block;
+        }
+    }
+}
+
+@media (min-width: 1600px) {
+    .footer {
+        padding: 2.5rem 0;
+        
+        p {
+            font-size: 1.25rem;
+        }
+    }
+}

@@ -1,0 +1,104 @@
+@import './variables.scss';
+
+.aboutBanner {
+    height: 100vh;
+    background: url(../public/images/Elon.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+.meetTheTeam {
+    padding: $desktopGap 0;
+
+    h2 {
+        margin-bottom: 2rem;
+    }
+
+    img {
+        width: 100%;
+        height: 20rem;
+        object-fit: cover;
+        object-position: top;
+    }
+
+    h3 {
+        color: $neutral-10;
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        margin-bottom: .25rem;
+        font-weight: 600;
+    }
+
+    span {
+        color: $neutral-7;
+        font-size: 1.25rem;
+    }
+
+    p {
+        font-size: 1.25rem;
+        margin-top: 3rem;
+        color: $neutral-9;
+    }
+}
+
+@media (max-width: 1024px) {
+    .meetTheTeam {
+        padding: $smallDesktopGap 0;
+    }
+}
+
+@media (max-width: 834px) {
+    .aboutBanner {
+        height: 55vh;
+        background-position: 65% 50%;
+    }
+
+    .meetTheTeam {
+        img {
+            width: 80%;
+            height: 25rem;
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .aboutBanner {
+        height: 100vh;
+        background: linear-gradient(to top, $neutral-0 20%, transparent 50%),
+                    url(../public/images/Elon.jpg);
+        background-position: 75% 50%;
+        background-size: cover;
+    }
+
+    .meetTheTeam {
+        padding: $mobileGap 0;
+
+        img {
+            width: 100%;
+            height: 15rem;
+        }
+    }
+}
+
+@media (min-width: 1600px) {
+    .aboutBanner {
+        background-position: 75% 50%;
+    }
+    
+    .meetTheTeam {
+        padding: $bigDesktopGap 0;
+
+        img {
+            height: 25rem;
+        }
+
+        h3 {
+            font-size: 2rem;
+            margin-bottom: .5rem;
+        }
+
+        span, p {
+            font-size: 1.5rem;
+        }
+    }
+}

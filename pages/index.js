@@ -1,65 +1,137 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import { ApolloClient, InMemoryCache, gql } from '@apollo/client'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import Moment from 'moment'
+import Link from 'next/link'
+import { useState } from 'react'
 
-export default function Home() {
+import Layout from '../components/Layout'
+import SEO from '../components/seo'
+import Loader from '../components/Loader/loader'
+
+import styles from '../styles/index.module.scss'
+
+export default function Home({ launches, company }) {
+
+  const [loader, showLoader] = useState(false)
+
+  const timestampConvertor = (timestamp) => {
+    const date = Moment.unix(timestamp).format("Do MMMM, YYYY")
+    return date
+  }
+
+  let valuation = company.valuation
+  valuation = valuation / 1000000000
+
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <>
+      <SEO 
+        title="Home" 
+        description="This is a fan made Space X app that shows all the latest launches"
+        index="index"
+        follow="follow"
+      />
+      <Layout>
+        {
+          loader
+          ? <Loader/>
+          : null
+        }
+        <div className={styles.banner}>
+          <div className="container">
+            <span className={styles.upcoming}>Upcoming Launch:</span>
+            <h1>
+              <FontAwesomeIcon icon={['fas', 'user-astronaut']}/> {launches.mission_name}
+              <br/> 
+              <FontAwesomeIcon icon={['fas', 'space-shuttle']}/> {launches.rocket.rocket_name}
+              <br/>
+              <FontAwesomeIcon icon={['fas', 'calendar-day']}/> {timestampConvertor(launches.launch_date_unix)}
+            </h1>
+            <Link href="/launches">
+              <a 
+                className="cta"
+                onClick={() => showLoader(true)}
+              ><span>Learn more</span></a>
+            </Link>
+          </div>
         </div>
-      </main>
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+        <div className={styles.aboutHome}>
+          <div className="container">
+            <div className={styles.customGrid}>
+              <div>
+                <img src="/images/banner2.jpg"/>
+              </div>
+              <div>
+                <h2 className="sub-heading">About</h2>
+                <p>{company.summary}</p>
+                <Link href="/about">
+                  <a 
+                    className="cta"
+                    onClick={() => showLoader(true)}
+                  ><span>More about SpaceX</span></a>
+                </Link>
+              </div>
+            </div>
+            <div className={styles.gridContainer}>
+              <div className="quadruple-grid">
+                <div>
+                  <span>Founded:</span>
+                  <h3>{company.founded}</h3>
+                </div>
+                <div>
+                  <span>Founder:</span>
+                  <h3>{company.founder}</h3>
+                </div>
+                <div>
+                  <span>Employees</span>
+                  <h3>{company.employees}</h3>
+                </div>
+                <div>
+                  <span>Valuation:</span>
+                  <h3>${valuation} billion</h3>
+                </div>
+              </div>
+              <div className={styles.circle1}></div>
+              <div className={styles.circle2}></div>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    </>
   )
+}
+
+export async function getStaticProps() {
+  const client = new ApolloClient({
+    uri: 'https://api.spacex.land/graphql/',
+    cache: new InMemoryCache()
+  })
+
+  const { data } = await client.query({
+    query: gql`
+      {
+        launchNext {
+          launch_date_unix
+          mission_name
+          rocket {
+            rocket_name
+          }
+        },
+        company {
+            employees
+            founded
+            founder
+            valuation
+            summary
+        }
+      }
+    `
+  })
+
+  return {
+    props: {
+      launches: data.launchNext,
+      company: data.company
+    }
+  }
 }

@@ -1,0 +1,200 @@
+@import './variables.scss';
+
+.KeyEventsBanner {
+    height: 100vh;
+    background: url(../public/images/earth.jpg);
+    background-size: cover;
+}
+
+.timeline {
+    padding: $desktopGap 0;
+}
+
+.timelineGrid {
+    display: grid;
+    grid-template-columns: $desktopGap*2 1fr;
+    align-items: center;
+
+    .description {
+        border-left: .1rem solid $neutral-10;
+        padding: 3rem;
+        transition: .2s ease;
+
+        h2 {
+            color: $neutral-10;
+            font-weight: 600;
+            font-size: 1.75rem;
+            margin-bottom: .5rem;
+        }
+
+        p {
+            font-size: 1.25rem;
+            color: $neutral-8;
+            margin-bottom: 1.5rem;
+        }
+
+        svg {
+            color: $neutral-10;
+            background: $primary-1;
+            height: 1.25rem;
+            width: 1.25rem;
+            padding: .5rem;
+            border-radius: 50%;
+            transition: .3s ease;
+            margin-right: .5rem;
+            box-shadow: $shadow-main;
+        }
+
+        svg:hover {
+            color: $neutral-0;
+            background: $neutral-10;
+            box-shadow: $shadow-hover;
+            transform: translateY(.1rem);
+        }
+    }
+
+    .description:hover, .descriptionActive {
+        background: $neutral-1;
+    }
+
+    .year {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        svg {
+            font-size: 1.5rem;
+            margin-right: -1.25rem;
+            padding: .5rem;
+            background: $neutral-0;
+            border-radius: 50%;
+            z-index: 1;
+            color: $secondary-8;
+            transition: .3s ease;
+        }
+
+        svg:hover, .scale {
+            transform: scale(1.25);
+            color: $secondary-6;
+        }
+
+        span {
+            color: $neutral-10;
+            font-size: 1.25rem;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .timeline {
+        padding: $smallDesktopGap 0;
+    }
+}
+
+@media (max-width: 834px) {
+    .KeyEventsBanner {
+        height: 55vh;
+    }
+
+    .timelineGrid {
+        grid-template-columns: 1fr 3fr;
+
+        .description {
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            svg {
+                margin-right: 1rem;
+            }
+        }
+
+        .year {
+            span {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .KeyEventsBanner {
+        background: linear-gradient(to top, $neutral-0 20%, transparent 50%),
+                    url(../public/images/earth.jpg);
+        background-size: cover;
+        height: 100vh;
+    }
+
+    .timeline {
+        padding: $mobileGap 0;
+    }
+
+    .timelineGrid {
+        display: block;
+
+        .description {
+            border-left: none;
+            padding: 0;
+            margin-bottom: 2.5rem;
+
+            h2 {
+                margin-top: .25rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+            }
+        }
+
+        .description:last-child {
+            margin-bottom: 0;
+        }
+
+        .description:hover {
+            background: transparent;
+        }
+
+        .year {
+            svg {
+                display: none;
+            }
+        }
+    }
+}
+
+@media (min-width: 1600px) {
+    .timeline {
+        padding: $bigDesktopGap 0;
+    }
+
+    .timelineGrid {
+        grid-template-columns: $bigDesktopGap*2 1fr;
+
+        .description {
+            h2 {
+                font-size: 2rem;
+            }
+
+            svg {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+        }
+
+        .year {
+            svg {
+                font-size: 1.75rem;
+                padding: .75rem;
+                margin-right: -1.5rem;
+            }
+
+            span {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}

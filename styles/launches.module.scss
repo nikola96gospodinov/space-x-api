@@ -1,0 +1,391 @@
+@import './variables.scss';
+
+.launchesBanner {
+    height: 100vh;
+    background: linear-gradient(to right, $neutral-0, transparent 50%),
+                url(../public/images/launches-banner.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.launches {
+    padding: $desktopGap 0;
+}
+
+.card {
+    color: $neutral-10;
+    padding: 1rem;
+    border-bottom: .1rem solid $neutral-10;
+    cursor: pointer;
+    transition: .2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .imgTitle {
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 3rem;
+            height: 3rem;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    
+        svg {
+            width: 2rem!important;
+            height: 2rem!important;
+            background: $neutral-10;
+            color: $neutral-0;
+            padding: .5rem;
+            border-radius: 50%;
+        }
+
+        h2 {
+            margin-left: 1rem;
+            font-weight: 600;
+        }
+    }
+}
+
+.card:hover {
+    background: $neutral-1;
+}
+
+.paginationButtons {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+
+    li {
+        margin: .5rem;
+        padding: .5rem;
+        background: $neutral-0;
+        cursor: pointer;
+        color: $neutral-10;
+        font-weight: 600;
+        border: .1rem solid $neutral-10;
+        width: 1rem;
+        height: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: .2s ease;
+    }
+
+    li:hover, .paginationActive {
+        background: $neutral-10;
+        color: $neutral-0;
+    }
+
+    li:first-child {
+        width: 5rem;
+    }
+
+    li:last-child {
+        width: 3rem;
+    }
+}
+
+.paginationDisabled {
+    opacity: 0;
+}
+
+.success {
+    background: $green-2;
+    padding: .5rem;
+    border-radius: 1rem;
+    color: $green-10;
+    font-weight: 600;
+    // border: .1rem solid $green-9;
+    width: 4rem;
+    text-align: center;
+}
+
+.failure {
+    background: $red-2;
+    padding: .5rem;
+    border-radius: 1rem;
+    color: $red-10;
+    font-weight: 600;
+    // border: .1rem solid $red-9;
+    width: 4rem;
+    text-align: center;
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba($neutral-0, .9);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $neutral-0;
+    height: 100vh;
+    width: 100vw;
+
+    .content {
+        height: 90vh;
+        width: 30rem;
+        background: $neutral-10;
+        box-shadow: $shadow-main;
+        position: relative;
+        border-radius: 1rem;
+
+        .noImage {
+            height: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient($neutral-0, $neutral-1);
+            color: $neutral-10;
+
+            span {
+                font-size: 1.25rem;
+            }
+        }
+
+        .cross {
+            position: absolute;
+            right: -.75rem;
+            top: -.75rem;
+            height: 1.5rem;
+            width: 1.5rem;
+            background: $neutral-0;
+            color: $neutral-10;
+            padding: .5rem;
+            border-radius: 50%;
+            box-shadow: $shadow-main;
+            cursor: pointer;
+            border: .1rem solid $neutral-10;
+        }
+
+        .cross:hover {
+            background: $neutral-10;
+            color: $neutral-0;
+        }
+
+        img {
+            width: 100%;
+            height: 40%;
+            object-fit: cover;
+        }
+
+        .details {
+            padding: 1rem;
+            overflow-y: auto;
+            height: 50%;
+
+            div {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            h2 {
+                font-weight: 600;
+            }
+
+            p {
+                margin-top: 1rem;
+                color: $neutral-1;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .iconInfo {
+            padding: 1rem 0;
+            border-bottom: .1rem solid $neutral-8;
+            color: $neutral-0;
+            
+            svg {
+                font-size: 1.25rem;
+                margin-right: 2rem;
+            }
+        }
+
+        .bottomLinks {
+            justify-content: flex-start!important;
+            margin-top: 1.5rem;
+
+            svg {
+                margin-right: 1rem;
+                height: 1.5rem;
+                width: 1.5rem;
+                padding: .5rem;
+                background: $primary-1;
+                border-radius: 50%;
+                color: $neutral-10;
+                box-shadow: $shadow-hover;
+                transition: .2s ease;
+            }
+
+            svg:hover {
+                background: $neutral-0;
+                box-shadow: none;
+                transform: translateY(.1rem);
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .launches {
+        padding: $smallDesktopGap 0;
+    }
+}
+
+@media (max-width: 834px) {
+    .launchesBanner {
+        height: 55vh;
+    }
+}
+
+@media (max-width: 600px) {
+    .launchesBanner {
+        height: 100vh;
+        background: linear-gradient(to top, $neutral-0 20%, transparent 50%),
+                    url(../public/images/launches-banner.jpg);
+        background-size: cover;
+        background-position: 65% 50%;
+    }
+
+    .launches {
+        padding: $mobileGap 0;
+    }
+
+    .card {
+        padding: .75rem 0;
+        
+        .imgTitle {
+            img, svg {
+                display: none;
+            }
+
+            h2 {
+                font-size: 1.125rem;
+                margin-right: .5rem;
+            }
+        }
+    }
+
+    .success, .failure {
+        font-size: .875rem;
+        padding: .375rem .25rem;
+    }
+
+    .backdrop {
+        .content {
+            width: 85%;
+            transform: translateX(-2.5vw);
+
+            .cross {
+                top: -.5rem;
+                right: -.5rem;
+                height: 1.25rem;
+                width: 1.25rem;
+                padding: .25rem;
+            }
+
+            .details {
+                p {
+                    line-height: 1.25;
+                }
+            }
+        }
+    }
+
+    .paginationButtons {
+        li {
+            display: none;
+        }
+
+        li:first-child, li:last-child {
+            display: flex;
+        }
+    }
+}
+
+@media (min-width: 1600px) {
+    .launches {
+        padding: $bigDesktopGap 0;
+    }
+
+    .card {
+        padding: 1.25rem;
+
+        .imgTitle {
+            img {
+                width: 4rem;
+                height: 4rem;
+            }
+
+            h2 {
+                margin-left: 1.5rem;
+                font-size: 2rem
+            }
+        }
+    }
+
+    .success, .failure {
+        font-size: 1.5rem;
+        padding: .5rem .75rem;
+        width: 6rem;
+    }
+
+    .backdrop {
+        .content {
+            height: 75vh;
+            width: 35rem;
+
+            .noImage {
+                span {
+                    font-size: 1.5rem;
+                }
+            }
+
+            .cross {
+                right: -1rem;
+                top: -1rem;
+                height: 2rem;
+                width: 2rem;
+            }
+
+            .details {
+                height: 55%;
+                padding: 1.5rem;
+
+                h2 {
+                    font-size: 2rem;
+                }
+
+                p {
+                    font-size: 1.25rem;
+                }
+            }
+
+            .iconInfo {
+                padding: 1.25rem 0;
+                font-size: 1.25rem;
+
+                svg {
+                    font-size: 1.5rem;
+                }
+            }
+
+            .bottomLinks {
+                margin-top: 2rem;
+                
+                svg {
+                    height: 1.75rem;
+                    width: 1.75rem;
+                }
+            }
+        }
+    }
+}

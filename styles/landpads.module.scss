@@ -1,0 +1,195 @@
+@import './variables.scss';
+
+.landPadsBanner {
+    height: 100vh;
+    background: linear-gradient(to right, $neutral-0, transparent 50%),
+                url(../public/images/land-pads-banner.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.landPads {
+    padding: $desktopGap 0;
+}
+
+.card {
+    background: $neutral-1;
+    box-shadow: $shadow-main;
+    padding: 2rem;
+    color: $neutral-10;
+    border-radius: .5rem;
+    position: relative;
+    overflow: hidden;
+    z-index: -1;
+
+    .circle {
+        width: 10rem;
+        height: 10rem;
+        background: linear-gradient($neutral-0, $neutral-1);
+        border-radius: 50%;
+        position: absolute;
+        top: -2.5rem;
+        left: -2.5rem;
+        z-index: 0;
+    }
+
+    > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1;
+        position: relative;
+    }
+
+    h2 {
+        font-weight: 600;
+    }
+
+    p {
+        margin: 1rem 0;
+        color: $neutral-8;
+        z-index: 1;
+        position: relative;
+    }
+
+    .successRate {
+        padding: .5rem 0;
+        border-bottom: .1rem solid $neutral-2;
+        font-size: 1.25rem;
+    }
+
+    .locationAndLink {
+        margin-top: 1rem;
+        font-size: 1.25rem;
+        
+        span {
+            margin-left: .5rem;
+        }
+
+        .wiki {
+            background: linear-gradient($neutral-10, $neutral-8);
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: $neutral-0;
+            font-size: 1rem;
+            transition: .2s ease;
+            box-shadow: $shadow-main;
+        }
+
+        .wiki:hover {
+            box-shadow: $shadow-hover;
+            transform: translateY(.1rem);
+        }
+    }
+}
+
+.success {
+    color: $green-5;
+}
+
+.failure {
+    color: $red-5;
+}
+
+.active {
+    padding: .25rem .5rem;
+    background: $green-2;
+    color: $green-9;
+    border-radius: 1rem;
+}
+
+.retired {
+    padding: .25rem .5rem;
+    background: $red-2;
+    color: $red-9;
+    border-radius: 1rem;
+}
+
+@media (max-width: 1024px) {
+    .landPads {
+        padding: $smallDesktopGap 0;
+    }
+}
+
+@media (max-width: 834px) {
+    .landPadsBanner {
+        height: 55vh;
+        background-position: left center;
+    }
+}
+
+@media (max-width: 600px) {
+    .landPadsBanner {
+        height: 100vh;
+        background: linear-gradient(to top, $neutral-0 20%, transparent 50%),
+                    url(../public/images/land-pads-banner.jpg);
+        background-size: cover;
+        background-position: 50% 50%;
+    }
+
+    .landPads {
+        padding: $mobileGap 0;
+    }
+
+    .card {
+        padding: 1.5rem;
+
+        h2 {
+            font-size: 1.25rem;
+        }
+
+        p {
+            line-height: 1.25;
+        }
+
+        .successRate {
+            font-size: 1rem;
+        }
+
+        .locationAndLink {
+            span {
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+@media (min-width: 1600px) {
+    .landPads {
+        padding: $bigDesktopGap 0;
+    }
+
+    .card {
+        padding: 2.5rem;
+
+        h2 {
+            font-size: 1.75rem;
+        }
+
+        p {
+            font-size: 1.25rem;
+        }
+
+        .successRate {
+            font-size: 1.5rem;
+        }
+
+        .locationAndLink {
+            font-size: 1.5rem;
+
+            .wiki {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1.25rem;
+            }
+        }
+    }
+
+    .active, .retired {
+        font-size: 1.25rem;
+    }
+}
