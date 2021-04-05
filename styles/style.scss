@@ -185,6 +185,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 600px) {
+    body {
+        width: 100vw;
+    }
+
     .container {
         width: 90%;
     }

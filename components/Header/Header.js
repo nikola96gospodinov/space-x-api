@@ -18,9 +18,9 @@ const Header = () => {
     const router = useRouter()
 
     const transition1 = useTransition(nav, null, {
-        from: { transform: 'translate(20rem)' },
-        enter: { transform: 'translate(0)', zIndex: '4' },
-        leave: { transform: 'translate(20rem)' },
+        from: { opacity: '0', transform: 'translateX(-20rem)'},
+        enter: { opacity: '1', transform: 'translateX(0)'},
+        leave: { opacity: '0', transform: 'translateX(-20rem)'},
     })
 
     const transition2 = useTransition(nav, null, {
