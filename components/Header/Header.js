@@ -17,16 +17,10 @@ const Header = () => {
     // For getting the path name
     const router = useRouter()
 
-    const transition1 = useTransition(nav, null, {
-        from: { opacity: '0', transform: 'translateX(-20rem)'},
-        enter: { opacity: '1', transform: 'translateX(0)'},
-        leave: { opacity: '0', transform: 'translateX(-20rem)'},
-    })
-
-    const transition2 = useTransition(nav, null, {
-        from: { opacity: 0 },
-        enter: { opacity: 1 },
-        leave: { opacity: 0 },
+    const transition = useTransition(nav, null, {
+        from: { opacity: '0'},
+        enter: { opacity: '1'},
+        leave: { opacity: '0'},
     })
 
     useEffect(function mount() {
@@ -43,7 +37,7 @@ const Header = () => {
 
     return (
         <header className={style.header}>
-            {transition2.map(({ item, key, props }) => 
+            {transition.map(({ item, key, props }) => 
                 item && 
                     <animated.div style={props}>
                         <div 
@@ -53,7 +47,7 @@ const Header = () => {
                         ></div>
                     </animated.div>
             )}
-            {transition1.map(({ item, key, props }) => 
+            {transition.map(({ item, key, props }) => 
                 item && <animated.div style={props}><SideNav loader={loader} showLoader={showLoader}/></animated.div>
             )}
             <div className="container">
